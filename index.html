@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <meta charset = "utf-8">
+        <title>DrawingMusic</title>
+        <script src = "https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+        <script src = "./src/wa.js"></script>
+        <link href = "src/style.css" rel = "stylesheet">
+    </head>
+    <body>
+
+        <div id = "canvas"></div>
+
+
+
+        <div class = "pen">
+            <img src = "./pic/pen/pen_1_blue.png" onclick = "clicked_pen(this.id)" id = "#1D2088">
+            <img src = "./pic/pen/pen_2_skyblue.png" onclick = "clicked_pen(this.id)" id = "#0068B7">
+            <img src = "./pic/pen/pen_3_water.png" onclick = "clicked_pen(this.id)" id = "#00A0E9">
+            <img src = "./pic/pen/pen_4_greenblue.png" onclick = "clicked_pen(this.id)" id = "#009E96">
+            <img src = "./pic/pen/pen_5_green.png" onclick = "clicked_pen(this.id)" id = "#009944">
+            <img src = "./pic/pen/pen_6_younggreen.png" onclick = "clicked_pen(this.id)" id = "#8FC31F">
+            <img src = "./pic/pen/pen_7_yellow.png" onclick = "clicked_pen(this.id)" id = "#FFF100">
+
+            <img src = "./pic/pen/pen_8_orange.png" onclick = "clicked_pen(this.id)" id = "#F39800">
+            <img src = "./pic/pen/pen_9_red.png" onclick = "clicked_pen(this.id)" id = "#E60012">
+            <img src = "./pic/pen/pen_10_redpink.png" onclick = "clicked_pen(this.id)" id = "#E5004F">
+            <img src = "./pic/pen/pen_11_pink.png" onclick = "clicked_pen(this.id)" id = "#E4007F">
+            <img src = "./pic/pen/pen_12_pirple.png" onclick = "clicked_pen(this.id)" id = "#920783">
+        </div>
+
+
+        <div id = "button" class = "button">
+            <img src = "./pic/button/clear.png" onclick = "clicked_reset()" id = "reset" class = "reset">
+            <img src = "pic/eraser/eraser.png" onclick="clicked_eraser()" id = "eraser" class = "eraser">
+            <img src = "./pic/weight/3.png" onclick="clicked_weight(12)" id = "weigth_3" class = "weight_3">
+            <img src = "./pic/weight/2.png" onclick="clicked_weight(8)" id = "weigth_2" class = "weight_2">
+            <img src = "./pic/weight/1.png" onclick="clicked_weight(4)" id = "weigth_1" class = "weight_1">
+        </div>
+
+        <script src = "./src/page.js"></script>
+
+    </body>
+</html>
