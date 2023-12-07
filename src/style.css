@@ -1,5 +1,6 @@
 body {
     background-color: #eef;
+    overflow: hidden;
 }
 
 
@@ -40,21 +41,21 @@ body {
 }
 
 .reset {    
-    width: 10%;
+    width: 15vh;
 }
 
 .weight_1{
-    width: 5%;
+    width: 8vh;
 }
 
 .weight_2 {
-    width: 8%;
+    width: 12vh;
 }
 
 .weight_3 {
-    width: 10%;
+    width: 15vh;
 }
 
 .eraser {
-    width: 10%;
+    width: 15vh;
 }

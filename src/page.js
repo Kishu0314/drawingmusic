@@ -3,20 +3,20 @@
 */
 
 
-pic_pen = ["pen_13_black.png", "pen_1_blue.png", "pen_2_skyblue.png", "pen_3_water.png", "pen_4_greenblue.png",
+let pic_pen = ["pen_13_black.png", "pen_1_blue.png", "pen_2_skyblue.png", "pen_3_water.png", "pen_4_greenblue.png",
              "pen_5_green.png", "pen_6_younggreen.png", " pen_7_yellow.png", " pen_8_orange.png",
             "pen_9_red.png", "pen_10_redpink.png", "pen_11_pink.png", "pen_12_pirple.png"];
 
 
-code_list = [ 'C.wav', 'Csh.wav',
+let code_list = [ 'C.wav', 'Csh.wav',
             'D.wav', 'Dsh.wav', 'E.wav', 'F.wav','Fsh.wav',  
             'G.wav', 'Gsh.wav',  'A.wav', 'Ash.wav', 'B.wav'];
 
-singletone_list = ['01.wav', '02.wav', '03.wav', '04.wav', '05.wav', 
+let singletone_list = ['01.wav', '02.wav', '03.wav', '04.wav', '05.wav', 
                     '06.wav', '07.wav', '08.wav', '09.wav', '10.wav', 
                     '11.wav', '12.wav', '13.wav']
 
-id_list = ["#1D2088", "#0068B7", "#00A0E9", "#009E96", "#009944",
+let id_list = ["#1D2088", "#0068B7", "#00A0E9", "#009E96", "#009944",
              "#8FC31F", "#FFF100", "#F39800", "#E60012", "#E5004F",
               "#E4007F", "#920783"];
 
@@ -41,7 +41,7 @@ for (let i = 0; i < singletone_list.length; i++){
 }
 
 
-singletone = SINGLEs[0];
+let singletone = SINGLEs[0];
 
 function makeSound(y, y_min = 0, y_max = 425){
     console.log(Math.trunc(y / ((y_max - y_min) / 13 )), y)
@@ -56,7 +56,7 @@ let tone = CODEs[0];  // 今出している音
 // スクロールさせないための関数
 
 function cantScroll(event){
-    event.preventDefault
+    event.preventDefault();
 }
 
 
@@ -76,32 +76,35 @@ function clicked_pen(e){
     pen_code = e;
     pen_color = pen_code;
     tone = CODEs[id_list.indexOf(pen_color)];
-    // SAMPLE_AUDIOs[id_list.indexOf(pen_color)].play();
 }
 
-function clicked_reset(){  // リセットボタンが押されたら
-    clear();  // canvasをclearする
-    background(255);  // 背景色も消されるため、白色にする
+// リセットボタンが押されたら白色にする
+function clicked_reset(){
+    clear();
+    background(255);
 }
 
+// 太さを変える
 function clicked_weight(e){
     pen_weight = e;
 }
 
-
+// 消しゴムがクリックされたら、ペンの色を白にする
 function clicked_eraser(){
     pen_color = "#ffffff"
 }
 
 
 
+
 // キャンバスのための関数
 
+
+// 起動されたら実行する
 function setup(){
     // canvas = createCanvas(window.innerWidth * 2 / 3, window.innerHeight * 2 / 3);
     canvas = createCanvas(800, 480);
     canvas.parent("canvas");
-    // canvas.position((screen.width - 600) / 2, 0)
     background(255);
 }
 
@@ -111,87 +114,63 @@ let lastX = 0;
 let lastY = 0;
 let speed = 0;
 
-single_num = 0;
+let single_num = 0;
 
+
+// 毎秒実行する
 function draw(){
 
-    stroke(pen_color);
-    strokeWeight(pen_weight)
-
-    CANVAS.addEventListener("mousemove", function(event){  // 速度
-        // console.log(`X:${event.clientX}\nY:${event.clientY}`);
-        num = 1;
-        let deltaX = event.clientX - lastX;
-        let deltaY = event.clientY - lastY;
-        speed = Math.sqrt((deltaX * deltaX + deltaY * deltaY));
-        lastX = event.clientX;
-        lastY = event.clientY;
-        // console.log(speed);
-    })
-    CANVAS.addEventListener("mouseout", function(){
-        num = 0;
-        tone.pause();
-        tone.currentTime = 0;
-        singletone.pause();
-        singletone.currentTime = 0;
-    })
-
-    if (num == 1){
-
-            
-        if (mouseIsPressed){
-
-            
-        }else{
-                    
-            tone.pause();
-            tone.currentTime = 0;
-            singletone.pause();
-            singletone.currentTime = 0;
-        }
-
-
-    }else {
-        
-    }
+    
 }
 
 
+// マウスが移動したら
 function mouseDragged(){
+    if (0 < mouseY && mouseY < 480 && 0 < mouseX && mouseX < 800){
 
-    line(pmouseX, pmouseY, mouseX, mouseY);
+        console.log("mouseIn");
 
-    if (pen_color != "#000000"){
+        stroke(pen_color);
+        strokeWeight(pen_weight);
+        line(pmouseX, pmouseY, mouseX, mouseY);
 
-        tone.play();
+        if (pen_color != "#ffffff"){
 
-        if (single_num != Math.trunc(mouseY / ((450 - 0) / 13 ))){
-            singletone.pause();
-            single_num = Math.trunc(mouseY / ((450 - 0) / 13 ));
+            tone.play();
+
+            if (single_num != Math.trunc(mouseY / ((480 - 0) / 13 ))){
+                SINGLEs[single_num].pause();
+                single_num = Math.trunc(mouseY / ((480 - 0) / 13 ));
+                SINGLEs[single_num].play();
+            }
+
         }
-
-
-        singletone = SINGLEs[single_num];
-        singletone.play();
-        // console.log(singletone);
 
     }
 
+    return false;
+
 }
 
+// マウスが離されたら
+function touchEnded(){
 
-function mouseReleasd(){
+    console.log("mouseout");
+    
+    for(var i = 0; i < SINGLEs.length; i++){
+        SINGLEs[i].pause();
+        SINGLEs[i].currentTime = 0;
+    }
+    for(var i = 0; i < CODEs.length; i++){
+        CODEs[i].pause();
+        CODEs[i].currentTime = 0;
+    }
 
     tone.pause();
     tone.currentTime = 0;
     singletone.pause();
     singletone.currentTime = 0;
 
-}
+    return false;
 
-/*
-function makeSound(y, y_min = 0, y_max = 425){
-    console.log(Math.trunc(y / ((y_max - y_min) / 13 )), y)
-    singletone = SINGLEs[Math.trunc(y / ((y_max - y_min) / 13 ))]
-    singletone.play();
-} */
+}
