@@ -1,0 +1,60 @@
+body {
+    background-color: #eef;
+}
+
+
+/* ペンのスタイル */
+.pen img{
+    
+    width: 8vw;  /* 100 / 12 */
+    float: left;
+    display: flex;
+
+}
+
+.pen {
+    position: absolute;
+    top: 75vh;
+}
+
+
+/* Canvasのスタイル */
+.p5Canvas{
+    position: fixed;
+    left: 15vw;
+    top: 5vh;
+}
+
+
+/* 右に並んでいるボタンのスタイル */
+.button {
+    position: relative;
+    text-align: right;
+}
+
+.button img{
+    display: flex;
+    flex-direction: column;  /* 縦に並べる */
+    text-align: right;
+    margin: 1vw;
+}
+
+.reset {    
+    width: 10%;
+}
+
+.weight_1{
+    width: 5%;
+}
+
+.weight_2 {
+    width: 8%;
+}
+
+.weight_3 {
+    width: 10%;
+}
+
+.eraser {
+    width: 10%;
+}
