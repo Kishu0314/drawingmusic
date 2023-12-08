@@ -3,16 +3,11 @@
 */
 
 
-<<<<<<< HEAD
 let pic_pen = ["pen_13_black.png", "pen_1_blue.png", "pen_2_skyblue.png", "pen_3_water.png", "pen_4_greenblue.png",
-=======
-pic_pen = ["pen_13_black.png", "pen_1_blue.png", "pen_2_skyblue.png", "pen_3_water.png", "pen_4_greenblue.png",
->>>>>>> origin/main
              "pen_5_green.png", "pen_6_younggreen.png", " pen_7_yellow.png", " pen_8_orange.png",
             "pen_9_red.png", "pen_10_redpink.png", "pen_11_pink.png", "pen_12_pirple.png"];
 
 
-<<<<<<< HEAD
 let code_list = [ 'C.wav', 'Csh.wav',
             'D.wav', 'Dsh.wav', 'E.wav', 'F.wav','Fsh.wav',  
             'G.wav', 'Gsh.wav',  'A.wav', 'Ash.wav', 'B.wav'];
@@ -22,17 +17,6 @@ let singletone_list = ['01.wav', '02.wav', '03.wav', '04.wav', '05.wav',
                     '11.wav', '12.wav', '13.wav']
 
 let id_list = ["#1D2088", "#0068B7", "#00A0E9", "#009E96", "#009944",
-=======
-code_list = [ 'C.wav', 'Csh.wav',
-            'D.wav', 'Dsh.wav', 'E.wav', 'F.wav','Fsh.wav',  
-            'G.wav', 'Gsh.wav',  'A.wav', 'Ash.wav', 'B.wav'];
-
-singletone_list = ['01.wav', '02.wav', '03.wav', '04.wav', '05.wav', 
-                    '06.wav', '07.wav', '08.wav', '09.wav', '10.wav', 
-                    '11.wav', '12.wav', '13.wav']
-
-id_list = ["#1D2088", "#0068B7", "#00A0E9", "#009E96", "#009944",
->>>>>>> origin/main
              "#8FC31F", "#FFF100", "#F39800", "#E60012", "#E5004F",
               "#E4007F", "#920783"];
 
@@ -57,11 +41,7 @@ for (let i = 0; i < singletone_list.length; i++){
 }
 
 
-<<<<<<< HEAD
 let singletone = SINGLEs[0];
-=======
-singletone = SINGLEs[0];
->>>>>>> origin/main
 
 function makeSound(y, y_min = 0, y_max = 425){
     console.log(Math.trunc(y / ((y_max - y_min) / 13 )), y)
@@ -76,11 +56,7 @@ let tone = CODEs[0];  // 今出している音
 // スクロールさせないための関数
 
 function cantScroll(event){
-<<<<<<< HEAD
     event.preventDefault();
-=======
-    event.preventDefault
->>>>>>> origin/main
 }
 
 
@@ -100,7 +76,6 @@ function clicked_pen(e){
     pen_code = e;
     pen_color = pen_code;
     tone = CODEs[id_list.indexOf(pen_color)];
-<<<<<<< HEAD
 }
 
 // リセットボタンが押されたら白色にする
@@ -110,49 +85,26 @@ function clicked_reset(){
 }
 
 // 太さを変える
-=======
-    // SAMPLE_AUDIOs[id_list.indexOf(pen_color)].play();
-}
-
-function clicked_reset(){  // リセットボタンが押されたら
-    clear();  // canvasをclearする
-    background(255);  // 背景色も消されるため、白色にする
-}
-
->>>>>>> origin/main
 function clicked_weight(e){
     pen_weight = e;
 }
 
-<<<<<<< HEAD
 // 消しゴムがクリックされたら、ペンの色を白にする
-=======
-
->>>>>>> origin/main
 function clicked_eraser(){
     pen_color = "#ffffff"
 }
 
 
 
-<<<<<<< HEAD
 
 // キャンバスのための関数
 
 
 // 起動されたら実行する
-=======
-// キャンバスのための関数
-
->>>>>>> origin/main
 function setup(){
     // canvas = createCanvas(window.innerWidth * 2 / 3, window.innerHeight * 2 / 3);
     canvas = createCanvas(800, 480);
     canvas.parent("canvas");
-<<<<<<< HEAD
-=======
-    // canvas.position((screen.width - 600) / 2, 0)
->>>>>>> origin/main
     background(255);
 }
 
@@ -162,7 +114,6 @@ let lastX = 0;
 let lastY = 0;
 let speed = 0;
 
-<<<<<<< HEAD
 let single_num = 0;
 
 
@@ -214,95 +165,12 @@ function touchEnded(){
         CODEs[i].pause();
         CODEs[i].currentTime = 0;
     }
-=======
-single_num = 0;
-
-function draw(){
-
-    stroke(pen_color);
-    strokeWeight(pen_weight)
-
-    CANVAS.addEventListener("mousemove", function(event){  // 速度
-        // console.log(`X:${event.clientX}\nY:${event.clientY}`);
-        num = 1;
-        let deltaX = event.clientX - lastX;
-        let deltaY = event.clientY - lastY;
-        speed = Math.sqrt((deltaX * deltaX + deltaY * deltaY));
-        lastX = event.clientX;
-        lastY = event.clientY;
-        // console.log(speed);
-    })
-    CANVAS.addEventListener("mouseout", function(){
-        num = 0;
-        tone.pause();
-        tone.currentTime = 0;
-        singletone.pause();
-        singletone.currentTime = 0;
-    })
-
-    if (num == 1){
-
-            
-        if (mouseIsPressed){
-
-            
-        }else{
-                    
-            tone.pause();
-            tone.currentTime = 0;
-            singletone.pause();
-            singletone.currentTime = 0;
-        }
-
-
-    }else {
-        
-    }
-}
-
-
-function mouseDragged(){
-
-    line(pmouseX, pmouseY, mouseX, mouseY);
-
-    if (pen_color != "#000000"){
-
-        tone.play();
-
-        if (single_num != Math.trunc(mouseY / ((450 - 0) / 13 ))){
-            singletone.pause();
-            single_num = Math.trunc(mouseY / ((450 - 0) / 13 ));
-        }
-
-
-        singletone = SINGLEs[single_num];
-        singletone.play();
-        // console.log(singletone);
-
-    }
-
-}
-
-
-function mouseReleasd(){
->>>>>>> origin/main
 
     tone.pause();
     tone.currentTime = 0;
     singletone.pause();
     singletone.currentTime = 0;
 
-<<<<<<< HEAD
     return false;
 
 }
-=======
-}
-
-/*
-function makeSound(y, y_min = 0, y_max = 425){
-    console.log(Math.trunc(y / ((y_max - y_min) / 13 )), y)
-    singletone = SINGLEs[Math.trunc(y / ((y_max - y_min) / 13 ))]
-    singletone.play();
-} */
->>>>>>> origin/main

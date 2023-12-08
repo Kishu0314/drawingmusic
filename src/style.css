@@ -1,9 +1,6 @@
 body {
     background-color: #eef;
-<<<<<<< HEAD
     overflow: hidden;
-=======
->>>>>>> origin/main
 }
 
 
@@ -44,7 +41,6 @@ body {
 }
 
 .reset {    
-<<<<<<< HEAD
     width: 15vh;
 }
 
@@ -62,23 +58,4 @@ body {
 
 .eraser {
     width: 15vh;
-=======
-    width: 10%;
-}
-
-.weight_1{
-    width: 5%;
-}
-
-.weight_2 {
-    width: 8%;
-}
-
-.weight_3 {
-    width: 10%;
-}
-
-.eraser {
-    width: 10%;
->>>>>>> origin/main
 }
