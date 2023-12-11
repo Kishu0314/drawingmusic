@@ -24,7 +24,7 @@ let id_list = ["#1D2088", "#0068B7", "#00A0E9", "#009E96", "#009944",
 
 
 let pen_color = id_list[0];
-let pen_weight = 5;
+let pen_weight = 8;
 let IDs = [];
 let CODEs = [];
 
@@ -102,8 +102,17 @@ function clicked_eraser(){
 
 // 起動されたら実行する
 function setup(){
+    let windowHeight;
+    let windowWidth;
     // canvas = createCanvas(window.innerWidth * 2 / 3, window.innerHeight * 2 / 3);
-    canvas = createCanvas(800, 480);
+    if (MediaQueryList.matches){  // 横幅より高さのほうが大きければ
+        windowHeight = window.innerWidth * 3 / 4;
+        windowWidth = window.innerHeight * 4 / 5;
+    } else {
+        windowWidth = window.innerWidth * 4 / 5;
+        windowHeight = window.innerHeight * 3 / 4;
+    }
+    canvas = createCanvas(windowWidth, windowHeight);
     canvas.parent("canvas");
     background(255);
 }
@@ -124,11 +133,19 @@ function draw(){
 }
 
 
+// ブラウザのウィンドウサイズを変更したら
+function windowResized(){
+    windowWidth = window.innerWidth * 4 / 5;
+    windowHeight = window.innerHeight * 3 / 4;
+    resizeCanvas(windowWidth, windowHeight);
+    background(255);
+}
+
+
 // マウスが移動したら
 function mouseDragged(){
-    if (0 < mouseY && mouseY < 480 && 0 < mouseX && mouseX < 800){
+    if (0 < mouseY && mouseY < windowHeight && 0 < mouseX && mouseX < windowWidth){
 
-        console.log("mouseIn");
 
         stroke(pen_color);
         strokeWeight(pen_weight);
@@ -138,9 +155,9 @@ function mouseDragged(){
 
             tone.play();
 
-            if (single_num != Math.trunc(mouseY / ((480 - 0) / 13 ))){
+            if (single_num != Math.trunc(mouseY / ((windowHeight - 0) / 13 ))){
                 SINGLEs[single_num].pause();
-                single_num = Math.trunc(mouseY / ((480 - 0) / 13 ));
+                single_num = Math.trunc(mouseY / ((windowHeight - 0) / 13 ));
                 SINGLEs[single_num].play();
             }
 
@@ -154,8 +171,6 @@ function mouseDragged(){
 
 // マウスが離されたら
 function touchEnded(){
-
-    console.log("mouseout");
     
     for(var i = 0; i < SINGLEs.length; i++){
         SINGLEs[i].pause();
