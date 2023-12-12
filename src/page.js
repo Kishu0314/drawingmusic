@@ -30,10 +30,12 @@ let CODEs = [];
 
 let SINGLEs =  [];
 
+let tone = CODEs[0];  // 今出している音
 
 for (let i = 0; i < id_list.length; i++){
     CODEs[i] = new Audio(`./src/tone/tone_code/${code_list[i]}`);
     IDs[i] = document.getElementById(id_list[i]);
+    IDs[i].addEventListener("touchstart", clicked_pen(id_list[i]));
 }
 
 for (let i = 0; i < singletone_list.length; i++){
@@ -41,31 +43,10 @@ for (let i = 0; i < singletone_list.length; i++){
 }
 
 
-let singletone = SINGLEs[0];
-
-function makeSound(y, y_min = 0, y_max = 425){
-    console.log(Math.trunc(y / ((y_max - y_min) / 13 )), y)
-    singletone = SINGLEs[Math.trunc(y / ((y_max - y_min) / 13 ))]
-    singletone.play();
-}
-
-let tone = CODEs[0];  // 今出している音
-
-
-
-// スクロールさせないための関数
-
-function cantScroll(event){
-    event.preventDefault();
-}
-
-
 window.onload = function() {
     // ページ読み込みと同時にロード
     wa.loadFile("./src/tone/tone_single/01.wav", function(buffer) {
     });
-    document.addEventListener("touchmove", cantScroll, {passive: false});
-    document.addEventListener("wheel", cantScroll, {passive: false});
 }
 
 
@@ -183,8 +164,6 @@ function touchEnded(){
 
     tone.pause();
     tone.currentTime = 0;
-    singletone.pause();
-    singletone.currentTime = 0;
 
     return false;
 
