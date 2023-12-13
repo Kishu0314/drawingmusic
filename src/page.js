@@ -68,15 +68,15 @@ $(".pen img").on("touchend", function(){
 
 $(".reset").on("touchend", function(){
     clicked_reset();
-})
+});
 
 $(".eraser").on("touchend", function(){
     clicked_eraser();
-})
+});
 
-$(".weight img").on("touchend", function(){
+$(".weight").on("touchend", function(){
     clicked_weight(Number($(this).attr("id")));
-})
+});
 
 
 // ボタンをクリックされたイベントのための関数
@@ -128,9 +128,6 @@ function setup(){
 
 const CANVAS = document.getElementById("canvas");
 let num = 0;
-let lastX = 0;
-let lastY = 0;
-let speed = 0;
 
 let single_num = 0;
 
