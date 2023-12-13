@@ -49,6 +49,11 @@ window.onload = function() {
     });
 }
 
+$(".pen").on("click", function(){
+    clicked_pen($(this).attr(id));
+});
+
+
 
 
 // ボタンをクリックされたイベントのための関数
