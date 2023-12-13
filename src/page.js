@@ -43,17 +43,39 @@ for (let i = 0; i < singletone_list.length; i++){
 }
 
 
+// スクロールさせないための関数
+
+function cantScroll(event){
+    event.preventDefault
+}
+
+
+
 window.onload = function() {
     // ページ読み込みと同時にロード
     wa.loadFile("./src/tone/tone_single/01.wav", function(buffer) {
     });
+    
+    document.addEventListener("touchmove", cantScroll, {passive: false});
+    document.addEventListener("wheel", cantScroll, {passive: false});
 }
 
-$(".pen").on("click", function(){
-    clicked_pen($(this).attr(id));
+$(".pen img").on("click", function(){
+    clicked_pen($(this).attr('id'));
+    console.log($(this).attr('id'));
 });
 
+$(".reset").on("click", function(){
+    clicked_reset();
+})
 
+$(".eraser").on("click", function(){
+    clicked_eraser();
+})
+
+$(".weight img").on("click", function(){
+    clicked_weight(Number($(this).attr("id")));
+})
 
 
 // ボタンをクリックされたイベントのための関数
