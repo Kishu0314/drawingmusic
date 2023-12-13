@@ -50,7 +50,6 @@ function cantScroll(event){
 }
 
 
-
 window.onload = function() {
     // ページ読み込みと同時にロード
     wa.loadFile("./src/tone/tone_single/01.wav", function(buffer) {
@@ -60,20 +59,22 @@ window.onload = function() {
     document.addEventListener("wheel", cantScroll, {passive: false});
 }
 
-$(".pen img").on("click", function(){
+
+// スマホ対応用、ボタンをタップした際のイベントの設定
+
+$(".pen img").on("touchend", function(){
     clicked_pen($(this).attr('id'));
-    console.log($(this).attr('id'));
 });
 
-$(".reset").on("click", function(){
+$(".reset").on("touchend", function(){
     clicked_reset();
 })
 
-$(".eraser").on("click", function(){
+$(".eraser").on("touchend", function(){
     clicked_eraser();
 })
 
-$(".weight img").on("click", function(){
+$(".weight img").on("touchend", function(){
     clicked_weight(Number($(this).attr("id")));
 })
 
