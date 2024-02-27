@@ -52,8 +52,6 @@ function cantScroll(event){
 
 window.onload = function() {
     // ページ読み込みと同時にロード
-    wa.loadFile("./src/tone/tone_single/01.wav", function(buffer) {
-    });
     
     document.addEventListener("touchmove", cantScroll, {passive: false});
     document.addEventListener("wheel", cantScroll, {passive: false});
